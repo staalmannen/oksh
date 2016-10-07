@@ -46,7 +46,7 @@ endif
 #
 ifneq ($(UNAME_S),Darwin)
 UPDATE := `grep -w ${PREFIX}/bin/${PROG} /etc/shells > /dev/null;\
-	[ $$? -ne 0] && echo "${PREFIX}/bin/${PROG}" >> /etc/shells`
+	[ $$? -ne 0 ] && echo "${PREFIX}/bin/${PROG}" >> /etc/shells`
 endif
 
 ifneq ($(UNAME_S),Darwin)
@@ -62,7 +62,7 @@ endif
 install: all
 ifneq ($(UNAME_S),Darwin)
 	${INSTALL} -c -s -o root -g ${GROUP} -m 555 ${PROG} ${PREFIX}/bin
-	${INSTALL} -c -s -o root -g ${GROUP} -m 444 oksh.1 ${MANDIR}/man1/${PROG}.1
+	${INSTALL} -c -o root -g ${GROUP} -m 444 oksh.1 ${MANDIR}/man1/${PROG}.1
 	echo ${UPDATE}
 else
 	@mkdir -p ${PREFIX}/bin ${MANDIR}/man1
