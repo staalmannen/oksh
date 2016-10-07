@@ -1,4 +1,4 @@
-/*	$OpenBSD: emacs.c,v 1.65 2016/01/26 17:39:31 mmcc Exp $	*/
+/*	$OpenBSD: emacs.c,v 1.66 2016/08/09 11:04:46 schwarze Exp $	*/
 
 /*
  *  Emacs-like command line editing and history
@@ -19,9 +19,9 @@
 
 #include <ctype.h>
 #include <locale.h>
-#include <bsd/stdio.h>
-#include <bsd/stdlib.h>
-#include <bsd/string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 #include "sh.h"
 #include "edit.h"
@@ -893,9 +893,10 @@ x_search_hist(int c)
 		if ((c = x_e_getc()) < 0)
 			return KSTD;
 		f = kb_find_hist_func(c);
-		if (c == CTRL('['))
+		if (c == CTRL('[')) {
+			x_e_ungetc(c);
 			break;
-		else if (f == x_search_hist)
+		} else if (f == x_search_hist)
 			offset = x_search(pat, 0, offset);
 		else if (f == x_del_back) {
 			if (p == pat) {

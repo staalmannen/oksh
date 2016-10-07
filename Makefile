@@ -7,8 +7,7 @@ SRCS=	alloc.c c_ksh.c c_sh.c c_test.c c_ulimit.c edit.c emacs.c eval.c \
 	version.c vi.c
 
 DEFS=	-Wall
-#CFLAGS+=${DEFS} -I. -I${.CURDIR} -I${.CURDIR}/../../lib/libc/gen
-CFLAGS+=${DEFS} -I. -I${.CURDIR}
+CFLAGS+=${DEFS} -I. -I${.CURDIR} -D_GNU_SOURCE
 MAN=	ksh.1 sh.1
 
 LINKS=	${BINDIR}/ksh ${BINDIR}/rksh

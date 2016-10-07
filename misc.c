@@ -4,13 +4,16 @@
  * Miscellaneous functions
  */
 
+#include <sys/types.h>
+
 #include <ctype.h>
 #include <errno.h>
 #include <fcntl.h>
+#include <grp.h>
 #include <limits.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
+#include <bsd/stdlib.h>
+#include <bsd/string.h>
+#include <bsd/unistd.h>
 
 #include "sh.h"
 #include "charclass.h"

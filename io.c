@@ -9,8 +9,8 @@
 #include <ctype.h>
 #include <errno.h>
 #include <fcntl.h>
-#include <bsd/string.h>
 #include <bsd/stdlib.h>
+#include <bsd/string.h>
 #include <bsd/unistd.h>
 
 #include "sh.h"

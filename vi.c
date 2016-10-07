@@ -12,7 +12,7 @@
 #include <sys/stat.h>		/* completion */
 
 #include <ctype.h>
-#include <string.h>
+#include <bsd/string.h>
 
 #include "sh.h"
 #include "edit.h"

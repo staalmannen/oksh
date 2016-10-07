@@ -36,7 +36,7 @@
 #define PEXITED		1
 #define PSIGNALLED	2
 #define PSTOPPED	3
-#define CHILD_MAX 20
+#define CHILD_MAX       20
 
 typedef struct proc	Proc;
 struct proc {

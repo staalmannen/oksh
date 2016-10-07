@@ -10,12 +10,10 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <paths.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-#include <limits.h>
+#include <bsd/stdio.h>
 #include <bsd/stdlib.h>
+#include <bsd/string.h>
+#include <bsd/unistd.h>
 
 #include "sh.h"
 #include "c_test.h"
