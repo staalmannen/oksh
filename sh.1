@@ -1,4 +1,4 @@
-.\"	$OpenBSD: sh.1,v 1.128 2015/05/04 19:34:13 jmc Exp $
+.\"	$OpenBSD: sh.1,v 1.133 2016/05/04 08:31:00 schwarze Exp $
 .\"
 .\" Copyright (c) 2015 Jason McIntyre <jmc@openbsd.org>
 .\"
@@ -14,7 +14,7 @@
 .\" ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 .\" OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 .\"
-.Dd $Mdocdate: May 4 2015 $
+.Dd $Mdocdate: May 4 2016 $
 .Dt SH 1
 .Os
 .Sh NAME
@@ -214,7 +214,7 @@ are listed below.
 Unless otherwise indicated,
 they exit 0 on success,
 and >0 if an error occurs.
-.Bl -ohang
+.Bl -tag -width 2n
 .It Ic .\& Ar file
 Execute the commands in
 .Ar file ,
@@ -329,6 +329,9 @@ but identify how the shell will interpret it
 Do not invoke
 .Ar command ,
 but identify the pathname the shell will use to run it.
+For aliases, a command to define that alias is printed.
+For shell reserved words, shell functions, and built-in utilities,
+just the name is printed.
 .El
 .Pp
 The exit status is that of
@@ -939,7 +942,7 @@ at the end of a bigword.
 Move to the start of the current word,
 or the start of the next word if the cursor is currently
 at the start of a word.
-.It Oo Ar count Oc Ns Ic b
+.It Oo Ar count Oc Ns Ic B
 Move to the start of the current bigword,
 or the start of the next bigword if the cursor is currently
 at the start of a bigword.
@@ -1339,7 +1342,7 @@ In that case the shell attempts arithmetic expansion first,
 then attempts command substitution if that fails.
 Or a non-ambiguous version can be used:
 .Pp
-.D1 $( Pf ( Ar command Ns Pf ) \ \&)
+.D1 "$( (" Ns Ar command Ns ") )"
 .Pp
 Arithmetic expansion works similarly,
 with an arithmetic expression being evaluated and substituted.
@@ -1377,7 +1380,7 @@ greater than, and greater than or equal to, respectively.
 The result is 1 if true, or 0 otherwise.
 .It == !=
 Equal (the result is 1 if both arguments are equal, and 0 otherwise)
-and not equal (the result is 1 if both arguments are non-zero, and 0 otherwise),
+and not equal (the result is 0 if both arguments are equal, and 1 otherwise),
 respectively.
 .It &
 Bitwise AND.
