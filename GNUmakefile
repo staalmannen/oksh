@@ -13,7 +13,7 @@ CFLAGS ?= -O2 -pipe
 CFLAGS += -Wall
 
 OBJS =	alloc.o c_ksh.o c_sh.o c_test.o c_ulimit.o edit.o emacs.o eval.o \
-	exec.o expr.o history.o io.o jobs.o lex.o mail.o main.o mknod.o \
+	exec.o expr.o history.o io.o jobs.o lex.o mail.o main.o \
 	misc.o path.o shf.o syn.o table.o trap.o tree.o tty.o var.o \
 	version.o vi.o
 
@@ -26,6 +26,7 @@ GROUP =	root
 OBJS +=	portable/common/reallocarray.o portable/linux/setmode.o \
 	portable/linux/signame.o portable/linux/strlcat.o \
 	portable/linux/strlcpy.o portable/common/strtonum.o
+CFLAGS += -Iportable/linux
 else ifeq ($(UNAME_S),FreeBSD)
 GROUP =	bin
 OBJS +=	portable/common/reallocarray.o
