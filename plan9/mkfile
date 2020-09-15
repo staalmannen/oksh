@@ -1,0 +1,45 @@
+APE=/sys/src/ape
+<$APE/config
+
+TARG=oksh 
+
+BIN=/$objtype/bin/
+
+OFILES=\
+	alloc.$O asprintf.$O c_ksh.$O c_sh.$O c_test.$O c_ulimit.$O edit.$O \\
+	emacs.$O eval.$O exec.$O expr.$O history.$O io.$O jobs.$O lex.$O mail.$O \\
+	main.$O misc.$O path.$O shf.$O syn.$O table.$O trap.$O tree.$O tty.$O var.$O \\
+	version.$O vi.$O confstr.$O reallocarray.$O siglist.$O signame.$O \\
+	strlcat.$O strlcpy.$O strtonum.$O unvis.$O vis.$O 
+    
+HFILES=\
+	pconfig.h
+
+UPDATE=\
+	mkfile\
+	$HFILES\
+	${OFILES:%.$O=%.c}\
+
+</sys/src/cmd/mkone
+
+CC=pcc
+LD=pcc
+CFLAGS= -c -I. -I./.. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -DVI -DPlan9
+
+%.$O : ../%.c
+	$CC $CFLAGS ../$stem.c
+
+install:V:
+		cp $O.out $BIN/oksh
+		cp ../oksh.1 /sys/man/1/oksh
+        
+nuke:V:
+		rm -f $BIN/oksh
+		rm -rf /sys/man/1/oksh
+
+install-sh:V:
+		cp $BIN/oksh $BIN/ape/sh
+		cp ../sh.1 /sys/man/1/sh
+
+        
+
